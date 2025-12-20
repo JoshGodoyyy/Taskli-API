@@ -9,6 +9,7 @@ public class AppDbContext : DbContext {
     }
 
     public DbSet<UserEntity> Users => Set<UserEntity>();
+    public DbSet<ClientEntity> Clients => Set<ClientEntity>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder) {
         base.OnModelCreating(modelBuilder);

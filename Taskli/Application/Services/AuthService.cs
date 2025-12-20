@@ -37,19 +37,19 @@ public class AuthService {
         var jwt = _configuration.GetSection("jwt");
 
         var claims = new List<Claim> {
-            new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-            new Claim(ClaimTypes.Name, user.Name)
+            new(ClaimTypes.NameIdentifier, user.Id.ToString()),
+            new(ClaimTypes.Name, user.Name)
         };
 
-        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwt["key"]!));
+        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwt["TASKLIKEY"]!));
 
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
         var token = new JwtSecurityToken(
-            issuer: jwt["Issuer"],
-            audience: jwt["Audience"],
+            issuer: jwt["TASKLIISSUER"],
+            audience: jwt["TASKLIAUDIENCE"],
             claims: claims,
-            expires: DateTime.UtcNow.AddMinutes(int.Parse(jwt["ExpireMinutes"]!)),
+            expires: DateTime.UtcNow.AddMinutes(30),
             signingCredentials: creds
         );
 
