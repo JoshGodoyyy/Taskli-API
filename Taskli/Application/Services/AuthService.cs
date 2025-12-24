@@ -3,6 +3,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using Taskli.Application.DTOs;
 using Taskli.Domain.Entities;
 using Taskli.Infrastructure.Data;
 
@@ -19,7 +20,7 @@ public class AuthService {
         _passwordHasher = new PasswordHasher<UserEntity>();
     }
 
-    public string? Login(string username, string password) {
+    public LoginResult? Login(string username, string password) {
         var user = _context.Users.FirstOrDefault(u => u.Name == username);
 
         if (user == null) {
@@ -30,7 +31,13 @@ public class AuthService {
             return null;
         }
 
-        return GenerateToken(user);
+        var token = GenerateToken(user);
+
+        return new LoginResult {
+            Id = user.Id,
+            Username = user.Name,
+            Token = token,
+        };
     }
 
     private string GenerateToken(UserEntity user) {
@@ -49,7 +56,7 @@ public class AuthService {
             issuer: jwt["TASKLIISSUER"],
             audience: jwt["TASKLIAUDIENCE"],
             claims: claims,
-            expires: DateTime.UtcNow.AddMinutes(30),
+            expires: DateTime.UtcNow.AddDays(30),
             signingCredentials: creds
         );
 

@@ -10,11 +10,13 @@ public class AppDbContext : DbContext {
 
     public DbSet<UserEntity> Users => Set<UserEntity>();
     public DbSet<ClientEntity> Clients => Set<ClientEntity>();
+    public DbSet<TaskEntity> Tasks => Set<TaskEntity>();
+    public DbSet<TaskLogEntity> TaskLogs => Set<TaskLogEntity>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder) {
         base.OnModelCreating(modelBuilder);
 
-        modelBuilder.HasDefaultSchema("sastecin_sgc_homologacao_centenario");
+        modelBuilder.HasDefaultSchema("taskli");
 
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
     }

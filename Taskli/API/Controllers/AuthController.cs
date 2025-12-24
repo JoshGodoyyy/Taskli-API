@@ -17,10 +17,12 @@ public class AuthController : Controller {
     [AllowAnonymous]
     [HttpPost("login")]
     public IActionResult Login([FromBody] LoginRequest request) {
-        var token = _authService.Login(request.Username, request.Password);
-        if (token == null) {
+        LoginResult? result = _authService.Login(request.Username, request.Password);
+
+        if (result == null) {
             return Unauthorized(new { message = "Usuário e/ou senha inválido(s)." });
         }
-        return Ok(new { token });
+        
+        return Ok(result);
     }
 }

@@ -77,5 +77,10 @@ public class ClientMap : IEntityTypeConfiguration<ClientEntity> {
         builder.Property(x => x.CEP)
             .HasColumnName("end_cep")
             .IsRequired();
+
+        builder.HasMany(x => x.Tasks)
+            .WithOne(x => x.Client)
+            .HasForeignKey(x => x.ClientId)
+            .OnDelete(DeleteBehavior.Restrict);
     }
 }
