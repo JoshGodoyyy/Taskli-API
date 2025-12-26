@@ -36,6 +36,36 @@ public class TaskMap : IEntityTypeConfiguration<TaskEntity> {
         builder.Property(x => x.AssignedUserId)
             .HasColumnName("idUsuarioExecucao");
 
+        builder.Property(x => x.ExecutionStreet)
+            .HasColumnName("logradouroExecucao")
+            .IsRequired()
+            .HasDefaultValue(string.Empty);
+
+        builder.Property(x => x.ExecutionNumber)
+            .HasColumnName("numeroExecucao")
+            .HasDefaultValue(string.Empty);
+
+        builder.Property(x => x.ExecutionComplement)
+            .HasColumnName("complementoExecucao");
+
+        builder.Property(x => x.ExecutionNeighborhood)
+            .HasColumnName("bairroExecucao")
+            .IsRequired()
+            .HasDefaultValue(string.Empty);
+
+        builder.Property(x => x.ExecutionCity)
+            .HasColumnName("cidadeExecucao")
+            .IsRequired()
+            .HasDefaultValue(string.Empty);
+
+        builder.Property(x => x.ExecutionState)
+            .HasColumnName("estadoExecucao")
+            .IsRequired()
+            .HasDefaultValue(string.Empty);
+
+        builder.Property(x => x.ExecutionZipCode)
+            .HasColumnName("cepExecucao");
+
         builder.Property(x => x.Latitude)
             .HasColumnName("latitude");
 

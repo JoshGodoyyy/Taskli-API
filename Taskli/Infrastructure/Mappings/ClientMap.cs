@@ -62,7 +62,7 @@ public class ClientMap : IEntityTypeConfiguration<ClientEntity> {
         builder.Property(x => x.Complement)
             .HasColumnName("end_complemento");
 
-        builder.Property(x => x.Neigbourhood)
+        builder.Property(x => x.Neighborhood)
             .HasColumnName("end_bairro")
             .IsRequired();
 

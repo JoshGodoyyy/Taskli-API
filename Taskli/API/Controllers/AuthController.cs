@@ -22,7 +22,8 @@ public class AuthController : Controller {
         if (result == null) {
             return Unauthorized(new { message = "Usuário e/ou senha inválido(s)." });
         }
-        
+
+        result.ServerTime = DateTime.Now;
         return Ok(result);
     }
 }
