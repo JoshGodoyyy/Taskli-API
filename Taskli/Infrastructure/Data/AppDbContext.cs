@@ -12,6 +12,7 @@ public class AppDbContext : DbContext {
     public DbSet<ClientEntity> Clients => Set<ClientEntity>();
     public DbSet<TaskEntity> Tasks => Set<TaskEntity>();
     public DbSet<TaskLogEntity> TaskLogs => Set<TaskLogEntity>();
+    public DbSet<AttachmentEntity> Attachments => Set<AttachmentEntity>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder) {
         base.OnModelCreating(modelBuilder);

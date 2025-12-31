@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
@@ -6,6 +7,10 @@ using Taskli.Application.Services;
 using Taskli.Infrastructure.Data;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.Configure<FormOptions>(options => {
+    options.MultipartBodyLengthLimit = 50 * 1024 * 1024;
+});
 
 builder.Services.AddDbContext<AppDbContext>(options => {
     options.UseMySql(
