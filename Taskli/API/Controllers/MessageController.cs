@@ -34,6 +34,7 @@ public class MessageController : Controller {
                 x.Text,
                 x.TaskId,
                 x.SenderId,
+                x.Sender,
                 x.SendedAt
             })
             .ToListAsync();
@@ -54,12 +55,17 @@ public class MessageController : Controller {
 
         await _context.SaveChangesAsync();
 
+        await _context.Entry(message)
+        .Reference(x => x.Sender)
+        .LoadAsync();
+
         await _hub.Clients
             .Group($"task-{dto.TaskId}")
             .SendAsync("ReceiveMessage", new {
                 message.Id,
                 message.TaskId,
                 message.SenderId,
+                message.Sender,
                 message.Text,
                 message.SendedAt
             });
