@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http.Features;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Taskli.API.Hubs;
 using Taskli.Application.Services;
 using Taskli.Infrastructure.Data;
 
@@ -45,6 +46,7 @@ builder.Services.AddAuthorization();
 
 builder.Services.AddScoped<AuthService>();
 
+builder.Services.AddSignalR();
 
 // Add services to the container.
 builder.Services.AddControllers();
@@ -64,5 +66,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapHub<TaskChatHub>("/hubs/taskchat");
 
 app.Run();

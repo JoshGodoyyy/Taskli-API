@@ -24,4 +24,5 @@ public class TaskEntity {
     public bool InProgress { get; set; }
     public ICollection<TaskLogEntity> TaskLogs { get; set; } = [];
     public ICollection<AttachmentEntity> Attachments { get; set; } = [];
+    public ICollection<MessageEntity> Messages { get; set; } = [];
 }

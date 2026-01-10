@@ -88,5 +88,8 @@ public class TaskMap : IEntityTypeConfiguration<TaskEntity> {
 
         builder.HasMany(x => x.Attachments)
             .WithOne(x => x.Task);
+
+        builder.HasMany(x => x.Messages)
+            .WithOne(x => x.Task);
     }
 }
