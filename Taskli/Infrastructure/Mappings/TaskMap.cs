@@ -16,6 +16,7 @@ public class TaskMap : IEntityTypeConfiguration<TaskEntity> {
 
         builder.Property(x => x.Title)
             .HasColumnName("nomeTarefa")
+            .HasMaxLength(45)
             .IsRequired();
 
         builder.Property(x => x.Description)

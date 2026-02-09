@@ -14,6 +14,7 @@ public class AppDbContext : DbContext {
     public DbSet<TaskLogEntity> TaskLogs => Set<TaskLogEntity>();
     public DbSet<AttachmentEntity> Attachments => Set<AttachmentEntity>();
     public DbSet<MessageEntity> Messages => Set<MessageEntity>();
+    public DbSet<SettingsEntity> Settings => Set<SettingsEntity>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder) {
         base.OnModelCreating(modelBuilder);

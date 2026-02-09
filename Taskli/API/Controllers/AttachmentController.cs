@@ -13,9 +13,7 @@ namespace Taskli.API.Controllers;
 public class AttachmentController : Controller {
     private readonly AppDbContext _context;
 
-    public AttachmentController(AppDbContext context) {
-        _context = context;
-    }
+    public AttachmentController(AppDbContext context) => _context = context;
 
     [HttpPost("Get")]
     public async Task<IActionResult> Get([FromBody] AttachmentRequest request) {
@@ -34,6 +32,7 @@ public class AttachmentController : Controller {
         var attachment = new AttachmentEntity {
             TaskId = dto.TaskId,
             File = ms.ToArray(),
+            MimeType = dto.MimeType,
         };
 
         _context.Attachments.Add(attachment);

@@ -21,5 +21,9 @@ public class AttachmentMap : IEntityTypeConfiguration<AttachmentEntity> {
         builder.Property(a => a.File)
             .HasColumnName("anexo")
             .HasColumnType("blob");
+
+        builder.Property(a => a.MimeType)
+            .HasColumnName("mime_type")
+            .IsRequired();
     }
 }

@@ -21,6 +21,28 @@ public class TaskController : Controller {
     public async Task<IActionResult> GetAll() {
         var tasks = await _context.Tasks
                                   .AsNoTracking()
+                                  .Select(t => new TaskResult {
+                                      Id = t.Id,
+                                      Title = t.Title,
+                                      Description = t.Description,
+                                      StartDate = t.StartDate,
+                                      EndDate = t.EndDate,
+                                      ExecutionStreet = t.ExecutionStreet,
+                                      ExecutionNumber = t.ExecutionNumber,
+                                      ExecutionComplement = t.ExecutionComplement,
+                                      ExecutionNeighborhood = t.ExecutionNeighborhood,
+                                      ExecutionCity = t.ExecutionCity,
+                                      ExecutionState = t.ExecutionState,
+                                      ExecutionZipCode = t.ExecutionZipCode,
+                                      Latitude = t.Latitude,
+                                      Longitude = t.Longitude,
+                                      Client = new ClientResult {
+                                          Id = t.Client!.Id,
+                                          TradeName = t.Client.TradeName,
+                                      },
+                                      Finished = t.Finished,
+                                      InProgress = t.InProgress
+                                  })
                                   .ToListAsync();
         return Ok(tasks);
     }
@@ -37,6 +59,7 @@ public class TaskController : Controller {
                                StartDate = t.StartDate,
                                EndDate = t.EndDate,
                                ExecutionStreet = t.ExecutionStreet,
+                               ExecutionNumber = t.ExecutionNumber,
                                ExecutionComplement = t.ExecutionComplement,
                                ExecutionNeighborhood = t.ExecutionNeighborhood,
                                ExecutionCity = t.ExecutionCity,
