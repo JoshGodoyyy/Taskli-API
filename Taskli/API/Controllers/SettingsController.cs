@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Taskli.Application.DTOs;
+using Taskli.Domain.Entities;
 using Taskli.Infrastructure.Data;
 
 namespace Taskli.API.Controllers;
@@ -13,11 +16,27 @@ public class SettingsController : Controller {
     public SettingsController(AppDbContext context) => _context = context;
 
     [HttpGet]
-    public IActionResult Get() {
-        var settings = _context.Settings.FirstOrDefault();
+    public async Task<IActionResult> Get() {
+        var settings = await _context.Settings.FirstOrDefaultAsync();
         if (settings == null) {
             return NotFound();
         }
+
         return Ok(settings);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Update([FromBody]List<RequirementResult> data) {
+        var settings = await _context.Settings.FirstOrDefaultAsync();
+
+        if (settings == null) {
+            return NotFound();
+        }
+
+        settings.TaskRequiredFields = data;
+
+        await _context.SaveChangesAsync();
+
+        return Ok();
     }
 }

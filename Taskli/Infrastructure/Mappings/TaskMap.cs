@@ -84,6 +84,9 @@ public class TaskMap : IEntityTypeConfiguration<TaskEntity> {
         builder.Property(x => x.Finished)
             .HasColumnName("finalizada");
 
+        builder.Property(x => x.Justification)
+            .HasColumnName("motivoNaoConformidade");
+
         builder.HasMany(x => x.TaskLogs)
             .WithOne(x => x.Task);
 

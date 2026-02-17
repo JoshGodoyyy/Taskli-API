@@ -150,4 +150,19 @@ public class TaskController : Controller {
 
         return Ok(task.Id);
     }
+
+    [HttpPost("Justification")]
+    public async Task<IActionResult> JustifyTask([FromBody] TaskJustify dto) {
+        var result = await _context.Tasks
+                                   .FirstOrDefaultAsync(t => t.Id == dto.Id);
+
+        if (result == null)
+            return NotFound();
+
+        result.Justification = dto.Justification;
+
+        await _context.SaveChangesAsync();
+
+        return Ok();
+    }
 }

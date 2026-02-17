@@ -22,6 +22,7 @@ public class TaskEntity {
     public ClientEntity? Client { get; set; }
     public bool Finished { get; set; }
     public bool InProgress { get; set; }
+    public string? Justification { get; set; }
     public ICollection<TaskLogEntity> TaskLogs { get; set; } = [];
     public ICollection<AttachmentEntity> Attachments { get; set; } = [];
     public ICollection<MessageEntity> Messages { get; set; } = [];

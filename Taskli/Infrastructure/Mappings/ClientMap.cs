@@ -78,6 +78,9 @@ public class ClientMap : IEntityTypeConfiguration<ClientEntity> {
             .HasColumnName("end_cep")
             .IsRequired();
 
+        builder.Property(x => x.NaoCobrarEmbalagem)
+            .HasColumnName("naoCobrarEmbalagem");
+
         builder.HasMany(x => x.Tasks)
             .WithOne(x => x.Client)
             .HasForeignKey(x => x.ClientId)
