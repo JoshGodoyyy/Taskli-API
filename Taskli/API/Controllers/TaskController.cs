@@ -38,7 +38,7 @@ public class TaskController : Controller {
                                       Longitude = t.Longitude,
                                       Client = new ClientResult {
                                           Id = t.Client!.Id,
-                                          TradeName = t.Client.TradeName,
+                                          TradeName = t.Client.TradeName ?? t.Client.CorporateName ?? string.Empty,
                                       },
                                       Finished = t.Finished,
                                       InProgress = t.InProgress
@@ -69,7 +69,7 @@ public class TaskController : Controller {
                                Longitude = t.Longitude,
                                Client = new ClientResult {
                                    Id = t.Client!.Id,
-                                   TradeName = t.Client.TradeName,
+                                   TradeName = t.Client.TradeName ?? t.Client.CorporateName ?? string.Empty,
                                },
                                Finished = t.Finished,
                                InProgress = t.InProgress

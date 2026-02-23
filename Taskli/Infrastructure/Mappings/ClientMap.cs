@@ -24,12 +24,10 @@ public class ClientMap : IEntityTypeConfiguration<ClientEntity> {
             .HasColumnName("id");
 
         builder.Property(x => x.TradeName)
-            .HasColumnName("fantasia")
-            .IsRequired();
+            .HasColumnName("fantasia");
 
         builder.Property(x => x.CorporateName)
-            .HasColumnName("razaoSocial")
-            .IsRequired();
+            .HasColumnName("razaoSocial");
 
         builder.Property(x => x.PersonType)
             .HasColumnName("tipoPessoa")
@@ -37,8 +35,7 @@ public class ClientMap : IEntityTypeConfiguration<ClientEntity> {
             .HasConversion(legalEntityConverter);
 
         builder.Property(x => x.CNPJ)
-            .HasColumnName("cnpj")
-            .IsRequired();
+            .HasColumnName("cnpj");
 
         builder.Property(x => x.IE)
             .HasColumnName("ie")
@@ -77,9 +74,6 @@ public class ClientMap : IEntityTypeConfiguration<ClientEntity> {
         builder.Property(x => x.CEP)
             .HasColumnName("end_cep")
             .IsRequired();
-
-        builder.Property(x => x.NaoCobrarEmbalagem)
-            .HasColumnName("naoCobrarEmbalagem");
 
         builder.HasMany(x => x.Tasks)
             .WithOne(x => x.Client)

@@ -15,6 +15,14 @@ public class AppDbContext : DbContext {
     public DbSet<AttachmentEntity> Attachments => Set<AttachmentEntity>();
     public DbSet<MessageEntity> Messages => Set<MessageEntity>();
     public DbSet<SettingsEntity> Settings => Set<SettingsEntity>();
+    public DbSet<SupplierEntity> Suppliers => Set<SupplierEntity>();
+    public DbSet<SalesTableEntity> SalesTables => Set<SalesTableEntity>();
+    public DbSet<ClientClassEntity> ClientClasses => Set<ClientClassEntity>();
+    public DbSet<DeliverySectorEntity> DeliverySectors => Set<DeliverySectorEntity>();
+    public DbSet<PaymentMethodEntity> PaymentMethods => Set<PaymentMethodEntity>();
+    public DbSet<PurchasePurposeEntity> PurchasePurposes => Set<PurchasePurposeEntity>();
+    public DbSet<CustomerReferralEntity> CustomerReferrals => Set<CustomerReferralEntity>();
+    public DbSet<AccountingPlanEntity> AccountingPlans => Set<AccountingPlanEntity>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder) {
         base.OnModelCreating(modelBuilder);

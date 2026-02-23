@@ -9,7 +9,7 @@ using Taskli.Infrastructure.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.WebHost.UseUrls("http://*:8080");
+builder.WebHost.UseUrls("http://*:5137");
 
 builder.Services.Configure<FormOptions>(options => {
     options.MultipartBodyLengthLimit = 50 * 1024 * 1024;

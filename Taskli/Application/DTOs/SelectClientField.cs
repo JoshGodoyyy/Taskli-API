@@ -3,7 +3,6 @@
 namespace Taskli.Application.DTOs;
 
 public class SelectClientField {
-    public int IdCliente { get; set; }
     public string Fantasia { get; set; } = string.Empty;
     public string RazaoSocial { get; set; } = string.Empty;
     public string TipoPessoa { get; set; } = string.Empty;
@@ -15,7 +14,6 @@ public class SelectClientField {
     public string End_complemento { get; set; } = string.Empty;
     public string End_bairro { get; set; } = string.Empty;
     public string End_cidade { get; set; } = string.Empty;
-    public int End_cmun { get; set; }
     public string End_estado { get; set; } = string.Empty;
     public string Email { get; set; } = string.Empty;
     public string Site { get; set; } = string.Empty;
@@ -24,13 +22,10 @@ public class SelectClientField {
     public string End_logradouro { get; set; } = string.Empty;
     public string Observacoes { get; set; } = string.Empty;
     public string ObservacoesPrivada { get; set; } = string.Empty;
-    public string NomeVendedor { get; set; } = string.Empty;
     public int? IdVendedor { get; set; }
     public decimal? Comissao { get; set; }
     public int? IdTabela { get; set; }
-    public string DescricaoTabela { get; set; } = string.Empty;
     public int? IdClasse { get; set; }
-    public string DescricaoClasse { get; set; } = string.Empty;
     public string Ent_cnpj { get; set; } = string.Empty;
     public string Ent_nomeRua { get; set; } = string.Empty;
     public string Ent_numero { get; set; } = string.Empty;
@@ -41,7 +36,6 @@ public class SelectClientField {
     public string Ent_estado { get; set; } = string.Empty;
     public string Ent_logradouro { get; set; } = string.Empty;
     public int? IdSetor { get; set; }
-    public string DescricaoSetor { get; set; } = string.Empty;
     public string Ent_email { get; set; } = string.Empty;
     public string Cob_logradouro { get; set; } = string.Empty;
     public string Cob_nomeRua { get; set; } = string.Empty;
@@ -80,7 +74,6 @@ public class SelectClientField {
     public decimal? CapitalSocial { get; set; }
     public int? StatusAtivo { get; set; }
     public int? IdFormaPagamento { get; set; }
-    public string DescricaoFormaPagamento { get; set; } = string.Empty;
     public int? NroParcelas { get; set; }
     public int? PrimeiraParcela { get; set; }
     public int? DemaisParcelas { get; set; }
@@ -100,8 +93,6 @@ public class SelectClientField {
     public int IsencaoPIS { get; set; }
     public int IsencaoST { get; set; }
     public string ObservacoesNotaFiscal { get; set; } = string.Empty;
-    public int IdPais { get; set; }
-    public string NomePais { get; set; } = string.Empty;
     public int Transp_idTransp { get; set; }
     public int Transp_pagamento { get; set; }
     public decimal Transp_valor { get; set; }
@@ -112,7 +103,6 @@ public class SelectClientField {
     public string PrazoPagamento { get; set; } = string.Empty;
     public int DiaFechamento { get; set; }
     public int DiaPagamento { get; set; }
-    public string DescricaoDiaFechamento { get; set; } = string.Empty;
     public string Cnae { get; set; } = string.Empty;
     public decimal DescontoLimite { get; set; }
     public decimal DescontoPadrao { get; set; }

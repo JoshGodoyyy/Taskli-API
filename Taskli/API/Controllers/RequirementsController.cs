@@ -16,11 +16,11 @@ public class RequirementsController : Controller {
     private static string GetFriendlyTypeName(Type type) {
         var underlyingType = Nullable.GetUnderlyingType(type) ?? type;
 
-        if (underlyingType == typeof(int)) return "Inteiro";
-        if (underlyingType == typeof(string)) return "Texto";
-        if (underlyingType == typeof(decimal)) return "Decimal";
-        if (underlyingType == typeof(DateTime)) return "Data";
-        if (underlyingType == typeof(bool)) return "Booleano";
+        if (underlyingType == typeof(int)) return "int";
+        if (underlyingType == typeof(string)) return "string";
+        if (underlyingType == typeof(decimal)) return "decimal";
+        if (underlyingType == typeof(DateTime)) return "date";
+        if (underlyingType == typeof(bool)) return "bool";
 
         return underlyingType.Name;
     }
@@ -37,7 +37,7 @@ public class RequirementsController : Controller {
                 Description = p.Name,
                 Type = GetFriendlyTypeName(p.PropertyType),
                 Nullable = IsNullable(p.PropertyType)
-            });
+            }).OrderBy(item => item.Description);
 
         return Ok(fields);
     }
