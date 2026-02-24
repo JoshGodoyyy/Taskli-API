@@ -5,4 +5,5 @@ public class SupplierEntity {
     public string TradeName { get; set; } = string.Empty;
     public string CorporateName { get; set; } = string.Empty;
     public string? CNPJ { get; set; } = string.Empty;
+    public int ClassId { get; set; }
 }

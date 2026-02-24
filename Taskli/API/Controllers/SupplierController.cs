@@ -18,6 +18,7 @@ public class SupplierController : Controller {
         var suppliers = await _context
                                 .Suppliers
                                 .AsNoTracking()
+                                .Where(s => s.ClassId == 90)
                                 .ToListAsync();
 
         return Ok(suppliers);

@@ -22,5 +22,8 @@ public class SupplierMap : IEntityTypeConfiguration<SupplierEntity> {
 
         builder.Property(x => x.CNPJ)
             .HasColumnName("cnpj");
+
+        builder.Property(x => x.ClassId)
+            .HasColumnName("idClasse");
     }
 }
