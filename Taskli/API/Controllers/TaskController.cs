@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json;
 using Taskli.Application.DTOs;
 using Taskli.Domain.Entities;
 using Taskli.Infrastructure.Data;
@@ -153,13 +154,15 @@ public class TaskController : Controller {
 
     [HttpPost("Justification")]
     public async Task<IActionResult> JustifyTask([FromBody] TaskJustify dto) {
-        var result = await _context.Tasks
-                                   .FirstOrDefaultAsync(t => t.Id == dto.Id);
+        var result = await _context.Tasks.FirstOrDefaultAsync(t => t.Id == dto.Id);
 
-        if (result == null)
+        if (result is null) {
             return NotFound();
+        }
 
-        result.Justification = dto.Justification;
+        string json = JsonSerializer.Serialize(dto.Data);
+
+        result.Justification = json;
 
         await _context.SaveChangesAsync();
 

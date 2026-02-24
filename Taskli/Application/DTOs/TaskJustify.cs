@@ -2,5 +2,5 @@
 
 public class TaskJustify {
     public int Id { get; set; }
-    public string? Justification { get; set; }
+    public required List<FieldData> Data { get; set; }
 }

@@ -63,9 +63,4 @@ public class ClientController : Controller {
 
         return Ok();
     }
-
-    //[HttpPost("Get")]
-    //public async Task<IActionResult> GetClient([FromBody] SearchClient dto) {
-
-    //}
 }
